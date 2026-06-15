@@ -10,30 +10,30 @@ static void print(const std::string &title)
 
 int main()
 {
-	Bureaucrat chief("Chief", 1);
-	Bureaucrat worker("Worker", 140);
+	Bureaucrat SlaveBoss("SlaveBoss", 1);
+	Bureaucrat ModernSlave("ModernSlave", 140);
 
 	print("Shrubbery - execute without signing");
 	ShrubberyCreationForm home("home");
-	worker.executeForm(home);
+	ModernSlave.executeForm(home);
 
 	print("Shrubbery - sign and execute");
-	worker.signForm(home);
-	worker.executeForm(home);
-	chief.executeForm(home);
+	ModernSlave.signForm(home);
+	ModernSlave.executeForm(home);
+	SlaveBoss.executeForm(home);
 
 	print("Robotomy - sign and execute several times");
-	RobotomyRequestForm robot("Bender");
-	chief.signForm(robot);
+	RobotomyRequestForm robot("Andrei");
+	SlaveBoss.signForm(robot);
 	for (int i = 0; i < 4; ++i)
-		chief.executeForm(robot);
+		SlaveBoss.executeForm(robot);
 
 	print("Presidential pardon - low grade then high grade");
 	PresidentialPardonForm pardon("Arthur Dent");
-	worker.signForm(pardon);
-	chief.signForm(pardon);
-	worker.executeForm(pardon);
-	chief.executeForm(pardon);
+	ModernSlave.signForm(pardon);
+	SlaveBoss.signForm(pardon);
+	ModernSlave.executeForm(pardon);
+	SlaveBoss.executeForm(pardon);
 
 	print("Invalid bureaucrat and form grades");
 	try
